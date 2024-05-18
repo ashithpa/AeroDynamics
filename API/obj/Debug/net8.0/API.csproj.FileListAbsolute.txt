@@ -1,3 +1,11 @@
+E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.csproj.AssemblyReference.cache
+E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.GeneratedMSBuildEditorConfig.editorconfig
+E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.AssemblyInfoInputs.cache
+E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.AssemblyInfo.cs
+E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.csproj.CoreCompileInputs.cache
+E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cs
+E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cache
+E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.sourcelink.json
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\appsettings.Development.json
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\appsettings.json
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\API.exe
@@ -34,6 +42,7 @@ E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\Newtonsoft.Json.dll
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -115,13 +124,6 @@ E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.csproj.AssemblyReference.cache
-E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.GeneratedMSBuildEditorConfig.editorconfig
-E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.AssemblyInfoInputs.cache
-E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.AssemblyInfo.cs
-E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.csproj.CoreCompileInputs.cache
-E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cs
-E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cache
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\staticwebassets.build.json
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\staticwebassets.development.json
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props
@@ -136,5 +138,3 @@ E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.pdb
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\ref\API.dll
-e:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\Newtonsoft.Json.dll
-e:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.sourcelink.json

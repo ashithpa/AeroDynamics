@@ -1,4 +1,3 @@
-// FlightTable.tsx
 import React from "react";
 import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
 import FlightRow from "./FlightRow";

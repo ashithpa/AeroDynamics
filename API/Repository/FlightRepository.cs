@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using API.Data;
 using API.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -15,11 +11,6 @@ namespace API.Repository
         public FlightRepository(FlightContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
-        }
-
-        public async Task<List<PassengerCost>> GetPassengerCostsAsync()
-        {
-            return await _context.PassengerCosts.ToListAsync();
         }
 
         public async Task<List<Flight>> GetFlightsAsync()

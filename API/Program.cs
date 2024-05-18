@@ -14,7 +14,8 @@ builder.Services.AddDbContext<FlightContext>(
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<FlightRepository>(); // Scoped lifetime
+builder.Services.AddScoped<IFlightRepository, FlightRepository>(); // Scoped lifetime
+builder.Services.AddScoped<IPassengerCostRepository, PassengerCostRepository>();
 builder.Services.AddScoped<FlightContext>(); // Scoped lifetime
 
 builder.Services.AddSwaggerGen();

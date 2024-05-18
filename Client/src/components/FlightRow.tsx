@@ -30,7 +30,6 @@ const FlightRow: React.FC<FlightRowProps> = ({
 
   // Function to confirm the deletion
   const handleConfirmDelete = () => {
-    debugger;
     deleteFlight(flight.id);
     setOpenConfirmation(false);
   };

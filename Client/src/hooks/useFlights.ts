@@ -1,8 +1,7 @@
-// useFlights.ts
 import { useState, useEffect, ChangeEvent } from "react";
 import axios from "axios";
 import Flight from "../components/Flight";
-
+import { baseUrl } from "../Config/config"; // Assuming baseUrl is defined in a separate file
 
 interface CostTableEntry {
   minPassengers: number;
@@ -14,17 +13,16 @@ export const useFlights = () => {
   const [flights, setFlights] = useState<Flight[]>([]);
   const [costTable, setCostTable] = useState<CostTableEntry[]>([]);
   const [file, setFile] = useState<File | null>(null);
+  const [refreshTable, setRefreshTable] = useState<boolean>(false); // State variable for refreshing table
 
   useEffect(() => {
     loadFlights();
     loadCostTable();
-  }, []);
+  }, [refreshTable]); // Include refreshTable in dependency array
 
   const loadFlights = async () => {
     try {
-      const response = await axios.get<Flight[]>(
-        "http://localhost:5000/api/flights"
-      );
+      const response = await axios.get<Flight[]>(`${baseUrl}/api/flights`);
       setFlights(response.data);
     } catch (error) {
       alert("Error loading flights.");
@@ -33,14 +31,13 @@ export const useFlights = () => {
 
   const loadCostTable = async () => {
     try {
-      const response = await axios.get<CostTableEntry[]>(
-        "http://localhost:5000/api/flights/PassengerCost"
-      );
+      const response = await axios.get<CostTableEntry[]>(`${baseUrl}/api/passengercosts`);
       setCostTable(response.data);
     } catch (error) {
       alert("Error loading cost table.");
     }
   };
+
   const handlePassengerChange = (
     id: number,
     value: number | string,
@@ -58,14 +55,14 @@ export const useFlights = () => {
         flight.numberOfPassengers >= entry.minPassengers &&
         flight.numberOfPassengers <= entry.maxPassengers
     );
-  
+
     if (costEntry) {
       const cost = flight.numberOfPassengers * costEntry.costPerPassenger;
-      const roundedCost = Math.round(cost * 100) / 100; // Round off to 2 decimal places
-      return roundedCost; // Return the rounded cost as a number
+      const roundedCost = Math.round(cost * 100) / 100;
+      return roundedCost;
     }
-  
-    return 0; // Default cost if entry not found in cost table
+
+    return 0;
   };
 
   const saveChanges = async (id: number) => {
@@ -73,8 +70,9 @@ export const useFlights = () => {
     if (flight) {
       flight.cost = calculateCost(flight);
       try {
-        await axios.put(`http://localhost:5000/api/flights/${id}`, flight);
+        await axios.put(`${baseUrl}/api/flights/${id}`, flight);
         alert("Flight updated successfully.");
+        setRefreshTable((prev) => !prev); // Toggle refreshTable to trigger table refresh
       } catch (error) {
         alert("Error updating flight.");
       }
@@ -89,14 +87,15 @@ export const useFlights = () => {
 
   const uploadFile = async () => {
     if (!file) return;
+
     const formData = new FormData();
     formData.append("file", file);
-    try {
-      await axios.post("http://localhost:5000/api/flights/upload", formData);
-      loadFlights(); // Load flights after uploading
-      // Clear the file input by resetting its value
 
+    try {
+      await axios.post(`${baseUrl}/api/flights/upload`, formData);
+      setFile(null); // Clear the file input after successful upload
       alert("Flights uploaded successfully.");
+      setRefreshTable((prev) => !prev); // Toggle refreshTable to trigger table refresh
     } catch (error) {
       alert("Error uploading flights.");
     }
@@ -104,9 +103,10 @@ export const useFlights = () => {
 
   const deleteFlight = async (id: number) => {
     try {
-      await axios.delete(`http://localhost:5000/api/flights/${id}`);
-      setFlights(flights.filter(flight => flight.id !== id));
+      await axios.delete(`${baseUrl}/api/flights/${id}`);
+      setFlights(flights.filter((flight) => flight.id !== id));
       alert("Flight deleted successfully.");
+      setRefreshTable((prev) => !prev); // Toggle refreshTable to trigger table refresh
     } catch (error) {
       alert("Error deleting flight.");
     }
@@ -121,6 +121,6 @@ export const useFlights = () => {
     saveChanges,
     handleFileChange,
     uploadFile,
-    deleteFlight
+    deleteFlight,
   };
 };

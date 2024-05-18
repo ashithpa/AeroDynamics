@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\02. Learning\\01. APractice\\CodingChanllenge\\AeroDynamics\\API\\API.csproj": {}
+    "e:\\02. Learning\\01. APractice\\CodingChanllenge\\AeroDynamics\\API\\API.csproj": {}
   },
   "projects": {
-    "E:\\02. Learning\\01. APractice\\CodingChanllenge\\AeroDynamics\\API\\API.csproj": {
+    "e:\\02. Learning\\01. APractice\\CodingChanllenge\\AeroDynamics\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\02. Learning\\01. APractice\\CodingChanllenge\\AeroDynamics\\API\\API.csproj",
+        "projectUniqueName": "e:\\02. Learning\\01. APractice\\CodingChanllenge\\AeroDynamics\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "E:\\02. Learning\\01. APractice\\CodingChanllenge\\AeroDynamics\\API\\API.csproj",
+        "projectPath": "e:\\02. Learning\\01. APractice\\CodingChanllenge\\AeroDynamics\\API\\API.csproj",
         "packagesPath": "C:\\Users\\mail2\\.nuget\\packages\\",
-        "outputPath": "E:\\02. Learning\\01. APractice\\CodingChanllenge\\AeroDynamics\\API\\obj\\",
+        "outputPath": "e:\\02. Learning\\01. APractice\\CodingChanllenge\\AeroDynamics\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mail2\\AppData\\Roaming\\NuGet\\NuGet.Config",
