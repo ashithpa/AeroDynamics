@@ -136,3 +136,5 @@ E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.pdb
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 E:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\ref\API.dll
+e:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\bin\Debug\net8.0\Newtonsoft.Json.dll
+e:\02. Learning\01. APractice\CodingChanllenge\AeroDynamics\API\obj\Debug\net8.0\API.sourcelink.json

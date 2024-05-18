@@ -41,7 +41,6 @@ export const useFlights = () => {
       alert("Error loading cost table.");
     }
   };
-
   const handlePassengerChange = (
     id: number,
     value: number | string,
@@ -103,13 +102,25 @@ export const useFlights = () => {
     }
   };
 
+  const deleteFlight = async (id: number) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/flights/${id}`);
+      setFlights(flights.filter(flight => flight.id !== id));
+      alert("Flight deleted successfully.");
+    } catch (error) {
+      alert("Error deleting flight.");
+    }
+  };
+
   return {
     flights,
+    costTable,
     loadFlights,
     handlePassengerChange,
     calculateCost,
     saveChanges,
     handleFileChange,
     uploadFile,
+    deleteFlight
   };
 };

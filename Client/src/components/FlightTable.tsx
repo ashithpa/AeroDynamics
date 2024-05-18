@@ -13,6 +13,7 @@ interface FlightTableProps {
   ) => void;
   calculateCost: (flight: Flight) => number;
   saveChanges: (id: number) => void;
+  deleteFlight: (id: number) => void; // Add deleteFlight prop
 }
 
 const FlightTable: React.FC<FlightTableProps> = ({
@@ -20,11 +21,11 @@ const FlightTable: React.FC<FlightTableProps> = ({
   handlePassengerChange,
   calculateCost,
   saveChanges,
+  deleteFlight,
 }) => (
   <Table>
     <TableHead>
       <TableRow>
-        {/* <TableCell>Id</TableCell> */}
         <TableCell>Flight ID</TableCell>
         <TableCell>Aircraft Registration No</TableCell>
         <TableCell>Destination</TableCell>
@@ -35,17 +36,25 @@ const FlightTable: React.FC<FlightTableProps> = ({
       </TableRow>
     </TableHead>
     <TableBody>
-      {flights.map((flight) => (
-        <FlightRow
-          key={flight.id}
-          flight={flight}
-          handlePassengerChange={handlePassengerChange}
-          calculateCost={calculateCost}
-          saveChanges={saveChanges}
-        />
-      ))}
+      {flights.length === 0 ? (
+        <TableRow>
+          <TableCell colSpan={7}>No records found.</TableCell>
+        </TableRow>
+      ) : (
+        flights.map((flight) => (
+          <FlightRow
+            key={flight.id}
+            flight={flight}
+            handlePassengerChange={handlePassengerChange}
+            calculateCost={calculateCost}
+            saveChanges={saveChanges}
+            deleteFlight={deleteFlight}
+          />
+        ))
+      )}
     </TableBody>
   </Table>
 );
+
 
 export default FlightTable;

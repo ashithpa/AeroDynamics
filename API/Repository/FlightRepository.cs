@@ -41,14 +41,25 @@ namespace API.Repository
         {
             _context.Flights.AddRange(flights);
             await _context.SaveChangesAsync();
-            Console.WriteLine("AddCompleted");
+            Console.WriteLine("Add Completed");
         }
 
         public async Task UpdateFlightAsync(Flight flight)
         {
             _context.Flights.Update(flight);
             await _context.SaveChangesAsync();
-            Console.WriteLine("UpdateCompleted");
+            Console.WriteLine("Update Completed");
+        }
+
+        public async Task DeleteFlightAsync(int id)
+        {
+            var flight = await _context.Flights.FindAsync(id);
+            if (flight != null)
+            {
+                _context.Flights.Remove(flight);
+                await _context.SaveChangesAsync();
+                Console.WriteLine("Delete Completed");
+            }
         }
 
         public decimal CalculateCost(int numberOfPassengers)
