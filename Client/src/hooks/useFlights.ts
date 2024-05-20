@@ -80,17 +80,32 @@ export const useFlights = () => {
   };
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
+    const selectedFile = e.target.files ? e.target.files[0] : null;
+    if (selectedFile) {
+      const fileType = selectedFile.name.split('.').pop()?.toLowerCase();
+      if (fileType !== 'csv' && fileType !== 'json') {
+        alert('Please select a CSV or JSON file.');
+        return;
+      }
+      setFile(selectedFile);
     }
   };
 
   const uploadFile = async () => {
-    if (!file) return;
-
+    if (!file) {
+      alert("Please select a file to upload.");
+      return;
+    }
+  
+    const fileType = file.name.split('.').pop()?.toLowerCase();
+    if (fileType !== 'csv' && fileType !== 'json') {
+      alert('Please select a CSV or JSON file.');
+      return;
+    }
+  
     const formData = new FormData();
     formData.append("file", file);
-
+  
     try {
       await axios.post(`${baseUrl}/api/flights/upload`, formData);
       setFile(null); // Clear the file input after successful upload
