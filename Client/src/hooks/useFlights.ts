@@ -2,12 +2,7 @@ import { useState, useEffect, ChangeEvent } from "react";
 import axios from "axios";
 import Flight from "../components/Flight";
 import { baseUrl } from "../Config/config"; // Assuming baseUrl is defined in a separate file
-
-interface CostTableEntry {
-  minPassengers: number;
-  maxPassengers: number;
-  costPerPassenger: number;
-}
+import CostTableEntry from "../components/CostTableEntry";
 
 export const useFlights = () => {
   const [flights, setFlights] = useState<Flight[]>([]);
@@ -31,7 +26,9 @@ export const useFlights = () => {
 
   const loadCostTable = async () => {
     try {
-      const response = await axios.get<CostTableEntry[]>(`${baseUrl}/api/passengercosts`);
+      const response = await axios.get<CostTableEntry[]>(
+        `${baseUrl}/api/passengercosts`
+      );
       setCostTable(response.data);
     } catch (error) {
       alert("Error loading cost table.");
@@ -53,7 +50,8 @@ export const useFlights = () => {
     const costEntry = costTable.find(
       (entry) =>
         flight.numberOfPassengers >= entry.minPassengers &&
-        flight.numberOfPassengers <= entry.maxPassengers
+        flight.numberOfPassengers <= entry.maxPassengers &&
+        flight.destination === entry.location
     );
 
     if (costEntry) {
@@ -82,9 +80,9 @@ export const useFlights = () => {
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files ? e.target.files[0] : null;
     if (selectedFile) {
-      const fileType = selectedFile.name.split('.').pop()?.toLowerCase();
-      if (fileType !== 'csv' && fileType !== 'json') {
-        alert('Please select a CSV or JSON file.');
+      const fileType = selectedFile.name.split(".").pop()?.toLowerCase();
+      if (fileType !== "csv" && fileType !== "json") {
+        alert("Please select a CSV or JSON file.");
         return;
       }
       setFile(selectedFile);
@@ -96,16 +94,16 @@ export const useFlights = () => {
       alert("Please select a file to upload.");
       return;
     }
-  
-    const fileType = file.name.split('.').pop()?.toLowerCase();
-    if (fileType !== 'csv' && fileType !== 'json') {
-      alert('Please select a CSV or JSON file.');
+
+    const fileType = file.name.split(".").pop()?.toLowerCase();
+    if (fileType !== "csv" && fileType !== "json") {
+      alert("Please select a CSV or JSON file.");
       return;
     }
-  
+
     const formData = new FormData();
     formData.append("file", file);
-  
+
     try {
       await axios.post(`${baseUrl}/api/flights/upload`, formData);
       setFile(null); // Clear the file input after successful upload

@@ -11,5 +11,6 @@ namespace API.Entities
         public int MinPassengers { get; set; }
         public int MaxPassengers { get; set; }
         public decimal CostPerPassenger { get; set; }
+        public string Location { get; set; }
     }
 }

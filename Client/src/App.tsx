@@ -1,17 +1,10 @@
-import React, { useState } from "react";
-import {
-  Container,
-  Typography,
-  Box,
-  Button,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from "@mui/material";
-import { ExpandMore } from "@mui/icons-material";
+import React from "react";
+import { Container, Typography, Box } from "@mui/material";
 import FlightTable from "./components/FlightTable";
 import { useFlights } from "./hooks/useFlights";
 import { red } from "@mui/material/colors";
+import AccordionPage from "./components/AccordionPage";
+import FileUploadPage from "./components/FileUploadPage";
 
 const App: React.FC = () => {
   // Destructuring properties from useFlights hook
@@ -27,8 +20,6 @@ const App: React.FC = () => {
   } = useFlights();
 
   // State for managing Accordion
-  const [accordionOpen, setAccordionOpen] = useState(false);
-
   return (
     <Container>
       <Box sx={{ bgcolor: "lightskyblue", color: red }} py={3}>
@@ -37,11 +28,10 @@ const App: React.FC = () => {
         </Typography>
       </Box>
       <Box my={2}>
-        {/* File input and upload button */}
-        <input type="file" onChange={handleFileChange} />
-        <Button variant="contained" color="primary" onClick={uploadFile}>
-          Upload Flights
-        </Button>
+        <FileUploadPage
+          handleFileChange={handleFileChange}
+          uploadFile={uploadFile}
+        ></FileUploadPage>
       </Box>
       <Typography
         variant="body1"
@@ -55,45 +45,7 @@ const App: React.FC = () => {
       >
         You can save files in either CSV or JSON format.
       </Typography>
-      {/* Accordion for displaying cost table */}
-      <Accordion
-        expanded={accordionOpen}
-        onChange={() => setAccordionOpen(!accordionOpen)}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMore />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography variant="h6">Cost Per Passenger Lookup:</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          {/* Conditional rendering of cost table */}
-          {costTable && costTable.length > 0 ? (
-            <table>
-              <thead>
-                <tr>
-                  <th>Min Passengers</th>
-                  <th>Max Passengers</th>
-                  <th>Cost Per Passenger</th>
-                </tr>
-              </thead>
-              <tbody>
-                {costTable.map((entry, index) => (
-                  <tr key={index}>
-                    <td>{entry.minPassengers}</td>
-                    <td>{entry.maxPassengers}</td>
-                    <td>{entry.costPerPassenger}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <Typography>No cost table available.</Typography>
-          )}
-        </AccordionDetails>
-      </Accordion>
-
+      <AccordionPage costTable={costTable}></AccordionPage>
       <Box mt={3}>
         {/* Flight table component */}
         <FlightTable

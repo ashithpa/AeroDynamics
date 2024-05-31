@@ -114,7 +114,7 @@ namespace API.Controllers
                             NumberOfPassengers = int.Parse(values[3], CultureInfo.InvariantCulture),
                         };
 
-                        flight.Cost = _flightRepository.CalculateCost(flight.NumberOfPassengers);
+                        flight.Cost = _flightRepository.CalculateCost(flight.NumberOfPassengers, flight.Destination);
 
                         flights.Add(flight);
                     }
@@ -147,7 +147,7 @@ namespace API.Controllers
                 existingFlight.Destination = flight.Destination;
                 existingFlight.NumberOfPassengers = flight.NumberOfPassengers;
                 existingFlight.Note = flight.Note;
-                existingFlight.Cost = _flightRepository.CalculateCost(flight.NumberOfPassengers);
+                existingFlight.Cost = _flightRepository.CalculateCost(flight.NumberOfPassengers, flight.Destination);
 
                 await _flightRepository.UpdateFlightAsync(existingFlight);
 

@@ -15,25 +15,57 @@ namespace API.Data
                 {
                     MinPassengers = 1,
                     MaxPassengers = 10,
-                    CostPerPassenger = 15.50M
+                    CostPerPassenger = 16.50M,
+                    Location = "Adelaide"
                 },
                        new PassengerCost
                 {
                     MinPassengers = 11,
                     MaxPassengers = 20,
-                    CostPerPassenger = 14.20M
+                    CostPerPassenger = 15.20M,
+                    Location = "Adelaide"
                 },
                       new PassengerCost
                 {
                     MinPassengers = 21,
                     MaxPassengers = 40,
-                    CostPerPassenger = 13.40M
+                    CostPerPassenger = 14M,
+                    Location = "Adelaide"
                 },
                       new PassengerCost
                 {
                     MinPassengers = 41,
                     MaxPassengers = 2147483647,
-                    CostPerPassenger = 10M
+                    CostPerPassenger = 10.50M,
+                    Location = "Adelaide"
+                },
+                         new PassengerCost
+                {
+                    MinPassengers = 1,
+                    MaxPassengers = 10,
+                    CostPerPassenger = 15.50M,
+                    Location = "Melbourne"
+                },
+                       new PassengerCost
+                {
+                    MinPassengers = 11,
+                    MaxPassengers = 20,
+                    CostPerPassenger = 14.20M,
+                    Location = "Melbourne"
+                },
+                      new PassengerCost
+                {
+                    MinPassengers = 21,
+                    MaxPassengers = 40,
+                    CostPerPassenger = 13.40M,
+                    Location = "Melbourne"
+                },
+                      new PassengerCost
+                {
+                    MinPassengers = 41,
+                    MaxPassengers = 2147483647,
+                    CostPerPassenger = 10M,
+                    Location = "Melbourne"
                 },
             };
 

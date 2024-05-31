@@ -10,6 +10,6 @@ namespace API.Repository
         Task AddFlightsAsync(List<Flight> flights);
         Task UpdateFlightAsync(Flight flight);
         Task DeleteFlightAsync(int id);
-        decimal CalculateCost(int numberOfPassengers);
+        decimal CalculateCost(int numberOfPassengers, string destination);
     }
 }
