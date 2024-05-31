@@ -67,6 +67,13 @@ namespace API.Data
                     CostPerPassenger = 10M,
                     Location = "Melbourne"
                 },
+                      new PassengerCost
+                {
+                    MinPassengers = 1,
+                    MaxPassengers = int.MaxValue,
+                    CostPerPassenger = 14.5M,
+                    Location = Utils.Other
+                },
             };
 
             foreach (var PassengerCost in PassengerCosts)

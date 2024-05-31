@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.Marshalling;
 using API.Data;
 using API.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -49,7 +50,14 @@ public class FlightRepository : IFlightRepository
 
     public decimal CalculateCost(int numberOfPassengers, string destination)
     {
-        var costEntry = _context.PassengerCosts.FirstOrDefault(c => numberOfPassengers >= c.MinPassengers && numberOfPassengers <= c.MaxPassengers && c.Location == destination);
+        var costEntry = _context.PassengerCosts.FirstOrDefault(c =>
+            numberOfPassengers >= c.MinPassengers &&
+            numberOfPassengers <= c.MaxPassengers &&
+            (c.Location == destination || c.Location == Utils.Other)
+        );
+
         return costEntry?.CostPerPassenger * numberOfPassengers ?? 0;
     }
+
+
 }

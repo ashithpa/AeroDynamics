@@ -3,6 +3,7 @@ import axios from "axios";
 import Flight from "../components/Flight";
 import { baseUrl } from "../Config/config"; // Assuming baseUrl is defined in a separate file
 import CostTableEntry from "../components/CostTableEntry";
+import { CalculateCost } from "./costUtils";
 
 export const useFlights = () => {
   const [flights, setFlights] = useState<Flight[]>([]);
@@ -46,21 +47,29 @@ export const useFlights = () => {
     setFlights(updatedFlights);
   };
 
+  // const calculateCost = (flight: Flight): number => {
+  //   const costEntry = costTable.find(
+  //     (entry) =>
+  //       flight.numberOfPassengers >= entry.minPassengers &&
+  //       flight.numberOfPassengers <= entry.maxPassengers &&
+  //       flight.destination === entry.location
+  //   );
+
+  //   if (costEntry) {
+  //     const cost = flight.numberOfPassengers * costEntry.costPerPassenger;
+  //     const roundedCost = Math.round(cost * 100) / 100;
+  //     return roundedCost;
+  //   }
+
+  //   return 0;
+  // };
+
   const calculateCost = (flight: Flight): number => {
-    const costEntry = costTable.find(
-      (entry) =>
-        flight.numberOfPassengers >= entry.minPassengers &&
-        flight.numberOfPassengers <= entry.maxPassengers &&
-        flight.destination === entry.location
+    return CalculateCost(
+      flight.numberOfPassengers,
+      flight.destination,
+      costTable
     );
-
-    if (costEntry) {
-      const cost = flight.numberOfPassengers * costEntry.costPerPassenger;
-      const roundedCost = Math.round(cost * 100) / 100;
-      return roundedCost;
-    }
-
-    return 0;
   };
 
   const saveChanges = async (id: number) => {
@@ -113,6 +122,93 @@ export const useFlights = () => {
       alert("Error uploading flights.");
     }
   };
+
+  // type CsvRow = {
+  //   [key: string]: string;
+  //   FlightNo: string;
+  //   AircraftRegistrationNo: string;
+  //   Destination: string;
+  //   Passengers: string;
+  // };
+
+  // type JsonData = {
+  //   FlightNo: string;
+  //   AircraftRegistrationNo: string;
+  //   Destination: string;
+  //   Passengers: string;
+  // }[];
+
+  // const uploadFile = async () => {
+  //   if (!file) {
+  //     alert("Please select a file to upload.");
+  //     return;
+  //   }
+
+  //   const fileType = file.name.split(".").pop()?.toLowerCase();
+  //   if (fileType !== "csv" && fileType !== "json") {
+  //     alert("Please select a CSV or JSON file.");
+  //     return;
+  //   }
+
+  //   const requiredColumns = ["FlightNo", "AircraftRegistrationNo", "Destination", "Passengers"];
+
+  //   const validateFile = (data: CsvRow[] | JsonData): boolean => {
+  //     if (data.length === 0) return false;
+
+  //     const headers = Object.keys(data[0]);
+  //     return requiredColumns.every(col => headers.includes(col));
+  //   };
+
+  //   const readFile = (file: File): Promise<CsvRow[] | JsonData> => {
+  //     return new Promise((resolve, reject) => {
+  //       const reader = new FileReader();
+  //       reader.onload = (event) => {
+  //         try {
+  //           const content = event.target?.result;
+  //           if (fileType === "csv" && typeof content === "string") {
+  //             const rows = content.split("\n");
+  //             const headers = rows[0].split(",");
+  //             const parsedData = rows.slice(1).map(row => {
+  //               const values = row.split(",");
+  //               return headers.reduce((obj, header, index) => {
+  //                 obj[header.trim()] = values[index]?.trim();
+  //                 return obj;
+  //               }, {} as CsvRow);
+  //             });
+  //             resolve(parsedData);
+  //           } else if (fileType === "json" && typeof content === "string") {
+  //             const parsedData = JSON.parse(content) as JsonData;
+  //             resolve(parsedData);
+  //           } else {
+  //             reject("Unsupported file type or invalid content.");
+  //           }
+  //         } catch (error) {
+  //           reject("Error parsing file content.");
+  //         }
+  //       };
+  //       reader.onerror = () => reject("Error reading file.");
+  //       reader.readAsText(file);
+  //     });
+  //   };
+
+  //   try {
+  //     const data = await readFile(file);
+  //     if (!validateFile(data)) {
+  //       alert("The file is missing required columns.");
+  //       return;
+  //     }
+
+  //     const formData = new FormData();
+  //     formData.append("file", file);
+
+  //     await axios.post(`${baseUrl}/api/flights/upload`, formData);
+  //     setFile(null);
+  //     alert("Flights uploaded successfully.");
+  //     setRefreshTable(prev => !prev);
+  //   } catch (error) {
+  //     alert(error || "Error uploading flights.");
+  //   }
+  // };
 
   const deleteFlight = async (id: number) => {
     try {
