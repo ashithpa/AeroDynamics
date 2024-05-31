@@ -35,7 +35,7 @@ namespace API.Data
                       new PassengerCost
                 {
                     MinPassengers = 41,
-                    MaxPassengers = 2147483647,
+                    MaxPassengers = int.MaxValue,
                     CostPerPassenger = 10.50M,
                     Location = "Adelaide"
                 },
@@ -63,7 +63,7 @@ namespace API.Data
                       new PassengerCost
                 {
                     MinPassengers = 41,
-                    MaxPassengers = 2147483647,
+                    MaxPassengers = int.MaxValue,
                     CostPerPassenger = 10M,
                     Location = "Melbourne"
                 },
